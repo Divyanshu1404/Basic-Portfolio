@@ -5,4 +5,6 @@ git commit -m "message"
 re
 ls
 git restore filename
-
+git push origin main/master
+mkdir git -demo-new
+git clone 
