@@ -310,9 +310,11 @@
 // console.log(abc());
 
 
-function abc(val){
-    val();
-}
-abcd(function(){
-    console.log("hello");
-});
+// function abc(val){
+//     val();
+// }
+// abcd(function(){
+//     console.log("hello");
+// });
+
+console.log("nofn");
