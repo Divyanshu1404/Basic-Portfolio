@@ -341,14 +341,28 @@
 //Closure   
 // a fiunciton that return another function is called closure
 
-function outer(){
-    let count=0;
-    return function(){
-        count++;
-        console.log(count);
-    };
-}
+// function outer(){
+//     let count=0;
+//     return function(){
+//         count++;
+//         console.log(count);
+//     };
+// }
 
-const counter = outer();
-counter();
-counter();
+// const counter = outer();
+// counter();
+// counter();
+
+// function checkAge(age){
+//     if(age>10) return "Allowed";
+//     else return "NotAllowed";
+// }
+// console.log(checkAge(19));
+
+
+function abc(val){
+    val();
+}
+abc(function(){
+    console.log("hello");
+});
