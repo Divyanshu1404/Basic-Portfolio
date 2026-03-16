@@ -360,9 +360,62 @@
 // console.log(checkAge(19));
 
 
-function abc(val){
-    val();
-}
-abc(function(){
-    console.log("hello");
-});
+// function abc(val){
+//     val();
+// }
+// abc(function(){
+//     console.log("hello");
+// });
+
+
+/// BMI
+// function calculateBMI(weight, height) {
+//     return weight / (height * height);
+// }
+// console.log(calculateBMI(70, 1.75));
+
+// function discCalculator(descount){
+//     return function(price){
+//         return price -price * (descount/100); 
+
+//     };
+// }
+// let descounter=discCalculator(10);
+// descounter(200);
+
+
+
+// function counter(){
+//     let count=0;
+//     return function(){
+//         count ++;
+//         return count;
+//     };
+// }
+
+// console.log("C");
+// let c=counter();
+// console.log(c());
+// console.log(c());
+// console.log(c());
+// console.log("D");
+// let d=counter();
+// console.log(d());
+// console.log(d());   
+// console.log(d());
+
+
+// function double(val){
+//     return val*2;
+// }
+
+// console.log(double(5));
+
+
+
+// (function (){
+//     const password="secret password";
+//     console.log(password);
+// }) ();
+
+// console.log(password);
