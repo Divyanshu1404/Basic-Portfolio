@@ -2,178 +2,544 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Divyanshu Mishra Resume</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divyanshu Mishra — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-body{
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: white;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.container{
-    width: 800px;
-    margin: 30px auto;
-    padding: 20px 40px;
-}
+  :root {
+    --ink:     #0f1117;
+    --ink2:    #3a3d4a;
+    --muted:   #737688;
+    --accent:  #1a4fd6;
+    --accent2: #0e3099;
+    --rule:    #e2e4ed;
+    --bg:      #f7f8fc;
+    --card:    #ffffff;
+    --tag-bg:  #eef1fb;
+    --tag-fg:  #1a4fd6;
+  }
 
-h1{
-    text-align: center;
-    margin-bottom: 5px;
-    font-size: 26px;
-    letter-spacing: 1px;
-}
+  html { background: var(--bg); }
 
-.contact{
-    text-align: center;
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
     font-size: 14px;
-    margin-bottom: 20px;
-}
+    color: var(--ink);
+    line-height: 1.65;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+  }
 
-.section-title{
-    font-weight: bold;
-    margin-top: 25px;
-    border-bottom: 2px solid black;
-    padding-bottom: 4px;
-    font-size: 16px;
-}
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    position: fixed;
+    top: 24px; right: 24px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 16px rgba(26,79,214,0.25);
+    transition: background 0.2s, transform 0.15s;
+    z-index: 100;
+  }
+  .print-btn:hover { background: var(--accent2); transform: translateY(-1px); }
 
-.item{
-    margin-top: 10px;
-}
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 12px 48px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
 
-.item-title{
-    font-weight: bold;
-}
+  /* ── HEADER ── */
+  .header {
+    background: var(--ink);
+    padding: 48px 52px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(26,79,214,0.18);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: 120px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(26,79,214,0.10);
+  }
+  .header-inner { position: relative; z-index: 1; }
 
-.date{
-    float: right;
-}
+  .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .tagline {
+    font-size: 13.5px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    align-items: center;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .contact-item:hover { color: #fff; }
+  .contact-item svg { opacity: 0.6; flex-shrink: 0; }
+  .contact-item:hover svg { opacity: 1; }
 
-ul{
-    margin-top: 5px;
-}
+  /* ── BODY ── */
+  .body { padding: 44px 52px 52px; }
 
-li{
+  /* ── SECTION ── */
+  .section { margin-bottom: 38px; }
+  .section:last-child { margin-bottom: 0; }
+
+  .section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── SUMMARY ── */
+  .summary {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink2);
+    border-left: 3px solid var(--accent);
+    padding-left: 18px;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 32px;
+  }
+  .skill-row { display: flex; gap: 8px; align-items: baseline; }
+  .skill-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 110px;
+    letter-spacing: 0.01em;
+  }
+  .skill-value { font-size: 13px; color: var(--ink2); }
+
+  /* ── EXPERIENCE / PROJECT CARD ── */
+  .entry { margin-bottom: 28px; }
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .entry-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .entry-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+  .entry-sub {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .entry-sub .sep { color: var(--rule); }
+
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-fg);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.01em;
+  }
+
+  .bullets { list-style: none; padding: 0; }
+  .bullets li {
+    position: relative;
+    padding-left: 16px;
     margin-bottom: 5px;
-}
+    font-size: 13.5px;
+    color: var(--ink2);
+    line-height: 1.6;
+  }
+  .bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .bullets li strong { color: var(--ink); font-weight: 600; }
 
-.clear{
-    clear: both;
-}
+  /* ── EDU TABLE ── */
+  .edu-grid { display: flex; flex-direction: column; gap: 14px; }
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .edu-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .edu-left {}
+  .edu-degree {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .edu-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-left: 6px;
+  }
+  .edu-school { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .edu-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
 
-@media print{
-    body{
-        margin: 0;
-    }
-}
+  /* ── CERTS ── */
+  .cert-list { display: flex; flex-direction: column; gap: 9px; }
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .cert-left { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+  .cert-name { font-size: 13.5px; color: var(--ink2); }
+  .cert-issuer { font-size: 12px; color: var(--muted); }
+  .cert-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── TWO-COL LAYOUT ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    html { background: #fff; }
+    body { padding: 0; font-size: 12px; }
+    .page { border-radius: 0; box-shadow: none; max-width: 100%; }
+    .print-btn { display: none; }
+    .header { padding: 32px 40px 28px; }
+    .body { padding: 32px 40px 40px; }
+    .name { font-size: 38px; }
+    .section { margin-bottom: 26px; }
+  }
+
+  @media (max-width: 640px) {
+    .header { padding: 32px 28px 28px; }
+    .body { padding: 30px 28px 36px; }
+    .name { font-size: 36px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .print-btn { top: 12px; right: 12px; }
+  }
+
+  /* ── FADE-IN ── */
+  .section {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.45s ease forwards;
+  }
+  .section:nth-child(1) { animation-delay: 0.05s; }
+  .section:nth-child(2) { animation-delay: 0.12s; }
+  .section:nth-child(3) { animation-delay: 0.19s; }
+  .section:nth-child(4) { animation-delay: 0.26s; }
+  .section:nth-child(5) { animation-delay: 0.33s; }
+  .section:nth-child(6) { animation-delay: 0.40s; }
+  .section:nth-child(7) { animation-delay: 0.47s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
 
-<h1>DIVYANSHU MISHRA</h1>
-<div class="contact">
-    +91 9506880176 | mishraaman4512@gmail.com | linkedin.com
-</div>
+<div class="page">
 
-<div class="section-title">ACADEMIC QUALIFICATION</div>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="name">Divyanshu Mishra</div>
+      <div class="tagline">Full-Stack Developer &amp; Cloud Enthusiast</div>
+      <div class="contact-row">
+        <a href="tel:+919506880176" class="contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 9506880176
+        </a>
+        <a href="mailto:mishraaman4512@gmail.com" class="contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          mishraaman4512@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/divyanshu-mishra-516b00290/" target="_blank" class="contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Profile
+        </a>
+        <span class="contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ghaziabad, Delhi-NCR
+        </span>
+      </div>
+    </div>
+  </div>
 
-<div class="item">
-    <span class="item-title">Masters Of Computer Applications (76.3%)</span>
-    <span class="date">Pursuing (Expected May 2026)</span>
-    <div class="clear"></div>
-    KIET Group of Institutions, Ghaziabad, Delhi-NCR, India
-</div>
+  <!-- BODY -->
+  <div class="body">
 
-<div class="item">
-    <span class="item-title">Bachelors of Computer Applications (72.5%)</span>
-    <span class="date">June 2024</span>
-    <div class="clear"></div>
-    School of Management Science, Varanasi, India
-</div>
+    <!-- SUMMARY -->
+    <div class="section">
+      <div class="section-title">About</div>
+      <p class="summary">MCA candidate (May 2026) with hands-on experience in full-stack web development and cloud infrastructure. Completed a paid IBM cloud internship involving containerisation, Docker deployments, and API management. Proficient in React, JavaScript, MongoDB, and AWS. Seeking a junior developer or cloud associate role to deliver scalable, production-ready solutions.</p>
+    </div>
 
-<div class="item">
-    <span class="item-title">CBSE (XII) (67.2%)</span>
-    <span class="date">March 2020</span>
-    <div class="clear"></div>
-    Sant Atulanand Residential Academy, Varanasi, India
-</div>
+    <!-- SKILLS -->
+    <div class="section">
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        <div class="skill-row"><span class="skill-label">Languages</span><span class="skill-value">C, C++, JavaScript, Python, SQL</span></div>
+        <div class="skill-row"><span class="skill-label">Cloud & DevOps</span><span class="skill-value">AWS, IBM Cloud, Docker, Containerisation</span></div>
+        <div class="skill-row"><span class="skill-label">Frontend</span><span class="skill-value">HTML5, CSS3, React.js</span></div>
+        <div class="skill-row"><span class="skill-label">Backend & DB</span><span class="skill-value">PHP, Node.js, MongoDB</span></div>
+        <div class="skill-row"><span class="skill-label">Tools</span><span class="skill-value">Git, GitHub, VS Code, IntelliJ IDE</span></div>
+        <div class="skill-row"><span class="skill-label">OS</span><span class="skill-value">Windows, Linux (basics)</span></div>
+      </div>
+    </div>
 
-<div class="item">
-    <span class="item-title">CBSE (X) (71.5%)</span>
-    <span class="date">April 2018</span>
-    <div class="clear"></div>
-    UDAI PRATAP PUBLIC SCHOOL, Varanasi, India
-</div>
+    <!-- INTERNSHIP -->
+    <div class="section">
+      <div class="section-title">Internship</div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Cloud Developer Intern <span style="font-family:'DM Sans',sans-serif;font-size:14px;color:var(--muted);font-weight:400;">— IBM PBEL</span></div>
+          <div class="entry-date">Jun 2025 – Jul 2025</div>
+        </div>
+        <div class="entry-sub">
+          <span>Remote &nbsp;·&nbsp; Paid Internship</span>
+          <span class="tag">IBM Cloud</span>
+          <span class="tag">Docker</span>
+          <span class="tag">API Management</span>
+        </div>
+        <ul class="bullets">
+          <li>Deployed <strong>3+ applications</strong> on IBM Cloud using Docker containers, gaining practical containerisation and virtualisation experience</li>
+          <li>Designed a <strong>scalable cloud-based solution</strong> for a real-world business use case as part of a 4-member team, delivering within 6 weeks</li>
+          <li>Enhanced skills in <strong>API management, cloud security policies,</strong> and automation tools on the IBM Cloud platform</li>
+        </ul>
+      </div>
+    </div>
 
-<div class="section-title">SKILLS</div>
-<ul>
-    <li><b>Language:</b> C, C++</li>
-    <li><b>Web Technologies:</b> HTML, CSS, JavaScript</li>
-    <li><b>Tools & Platforms:</b> Git, GitHub, AWS, IBM Cloud, VS Code, IntelliJ IDE</li>
-    <li><b>Operating System:</b> Windows</li>
-</ul>
+    <!-- PROJECTS -->
+    <div class="section">
+      <div class="section-title">Projects</div>
 
-<div class="section-title">INTERNSHIP</div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Budget Tracker System</div>
+          <div class="entry-date">Oct 2024 – Dec 2024</div>
+        </div>
+        <div class="entry-sub">
+          <span class="tag">React</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">CSS3</span>
+        </div>
+        <ul class="bullets">
+          <li>Built a <strong>responsive full-stack web app</strong> to track income and expenses with real-time CRUD operations and interactive data visualisation</li>
+          <li>Integrated <strong>MongoDB</strong> for persistent, scalable data storage with secure user data handling across frontend and backend</li>
+          <li>Delivered interactive dashboards that eliminated manual spreadsheet-based expense tracking for end users</li>
+        </ul>
+      </div>
 
-<div class="item">
-    <span class="item-title">IBM PBEL Virtual Internship (Paid Internship)</span>
-    <span class="date">June 2025 - July 2025</span>
-    <div class="clear"></div>
-    Duration: 6 Weeks | Remote
-    <ul>
-        <li>Gained experience in cloud platforms, virtualization, and containerization.</li>
-        <li>Deployed applications on IBM Cloud using Docker.</li>
-        <li>Collaborated on scalable cloud-based solutions.</li>
-        <li>Enhanced skills in API management, cloud security, and automation tools.</li>
-    </ul>
-</div>
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">Tours &amp; Travels Booking Platform</div>
+          <div class="entry-date">Jan 2024 – Apr 2024</div>
+        </div>
+        <div class="entry-sub">
+          <span style="color:var(--muted);font-size:12.5px;">Team Lead (4 members)</span>
+          <span class="tag">HTML/CSS/JS</span>
+          <span class="tag">PHP</span>
+          <span class="tag">Map API</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Led a 4-member team</strong> to build a full-featured travel booking app covering tour packages, transport, accommodation, payments, and admin management</li>
+          <li>Integrated a <strong>chatbot</strong> for user support, promotional discount logic, and an <strong>interactive Map API</strong> for destination visualisation</li>
+          <li>Managed project timeline and task delegation as team lead, delivering the complete system on schedule</li>
+        </ul>
+      </div>
+    </div>
 
-<div class="section-title">PROJECTS</div>
+    <!-- EDUCATION + CERTS side by side -->
+    <div class="two-col">
 
-<div class="item">
-    <span class="item-title">Tours and Travels</span>
-    <span class="date">Jan 2024 - April 2024</span>
-    <div class="clear"></div>
-    <ul>
-        <li>Developed web-based application for tour booking & management.</li>
-        <li>Implemented chatbot, discount system & Map API integration.</li>
-        <li>Used HTML, CSS, JavaScript and PHP.</li>
-    </ul>
-</div>
+      <div class="section">
+        <div class="section-title">Education</div>
+        <div class="edu-grid">
+          <div class="edu-row">
+            <div class="edu-left">
+              <div class="edu-degree">MCA <span class="edu-pct">76.3%</span></div>
+              <div class="edu-school">KIET Group of Institutions, Ghaziabad</div>
+            </div>
+            <div class="edu-date">Expected May 2026</div>
+          </div>
+          <div class="edu-row">
+            <div class="edu-left">
+              <div class="edu-degree">BCA <span class="edu-pct">72.5%</span></div>
+              <div class="edu-school">School of Management Science, Varanasi</div>
+            </div>
+            <div class="edu-date">Jun 2024</div>
+          </div>
+          <div class="edu-row">
+            <div class="edu-left">
+              <div class="edu-degree">CBSE XII <span class="edu-pct">67.2%</span></div>
+              <div class="edu-school">Sant Atulanand Residential Academy</div>
+            </div>
+            <div class="edu-date">Mar 2020</div>
+          </div>
+        </div>
+      </div>
 
-<div class="item">
-    <span class="item-title">Budget Tracker System</span>
-    <span class="date">Oct 2024 - Dec 2024</span>
-    <div class="clear"></div>
-    <ul>
-        <li>Built responsive expense tracker using React.</li>
-        <li>Implemented CRUD operations with real-time updates.</li>
-        <li>Integrated MongoDB for secure data storage.</li>
-    </ul>
-</div>
+      <div class="section">
+        <div class="section-title">Certifications</div>
+        <div class="cert-list">
+          <div class="cert-row">
+            <div class="cert-left">
+              <span class="cert-name">AWS Cloud Foundations</span>
+              <span class="cert-issuer">Amazon Web Services</span>
+            </div>
+            <span class="cert-date">Apr 2025</span>
+          </div>
+          <div class="cert-row">
+            <div class="cert-left">
+              <span class="cert-name">Data Analytics</span>
+              <span class="cert-issuer">Deloitte</span>
+            </div>
+            <span class="cert-date">2025</span>
+          </div>
+          <div class="cert-row">
+            <div class="cert-left">
+              <span class="cert-name">Git &amp; GitHub</span>
+              <span class="cert-issuer">LinkedIn Learning</span>
+            </div>
+            <span class="cert-date">2024</span>
+          </div>
+          <div class="cert-row">
+            <div class="cert-left">
+              <span class="cert-name">DSA &amp; Aptitude (150 hrs)</span>
+              <span class="cert-issuer">Programming Pathshala</span>
+            </div>
+            <span class="cert-date">Feb 2025</span>
+          </div>
+          <div class="cert-row">
+            <div class="cert-left">
+              <span class="cert-name">C Programming Workshop</span>
+              <span class="cert-issuer">KIET</span>
+            </div>
+            <span class="cert-date">Feb 2022</span>
+          </div>
+        </div>
+      </div>
 
-<div class="section-title">CERTIFICATIONS</div>
-<ul>
-    <li>AWS Academy Graduate – Cloud Foundations (April 2025)</li>
-    <li>Learning Git and GitHub - LinkedIn Learning (Sept 2025)</li>
-    <li>150 hours DSA & Aptitude Training – Programming Pathshala (Feb 2025)</li>
-    <li>C-Programming Workshop (Feb 2022)</li>
-</ul>
+    </div>
 
-<div class="section-title">EXTRACURRICULAR ACTIVITIES</div>
-<ul>
-    <li>Mentored junior students in programming.</li>
-    <li>Sports Captain for 2 years.</li>
-    <li>DELOITTE Data Analytics Certificate.</li>
-    <li>Participated in coding bootcamps and challenges.</li>
-</ul>
+    <!-- EXTRACURRICULAR -->
+    <div class="section">
+      <div class="section-title">Extracurricular</div>
+      <ul class="bullets">
+        <li>Mentored <strong>10+ junior students</strong> in programming fundamentals and technical interview preparation at KIET</li>
+        <li>Elected <strong>Sports Captain</strong> for 2 consecutive years in school — managed team scheduling and inter-school competitions</li>
+        <li>Participated in <strong>coding bootcamps</strong> and competitive programming challenges to sharpen DSA and problem-solving skills</li>
+      </ul>
+    </div>
 
-</div>
+  </div><!-- /body -->
+</div><!-- /page -->
 
 </body>
 </html>
